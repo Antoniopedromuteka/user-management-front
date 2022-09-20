@@ -1,3 +1,13 @@
  @tailwind base;
  @tailwind components;
  @tailwind utilities;
+
+ 
+
+ @layer components{
+
+
+  .item-dashboard{
+  @apply flex flex-1 items-center mb-2 mt-8 hover:bg-gray-900 hover:text-red-100 rounded-sm cursor-pointer p-2;
+  }
+ }

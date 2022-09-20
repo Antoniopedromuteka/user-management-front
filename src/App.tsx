@@ -1,13 +1,19 @@
 import React from 'react';
+import { DashBoardHome } from './Pages/DashboardHome';
  
-import './App.css';
-
+ 
 function App() {
   return (
-    <div>
- 
-      
-    </div>
+   <>
+
+
+    <DashBoardHome/>
+
+
+
+
+
+   </>
   );
 }
 
