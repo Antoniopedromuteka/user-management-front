@@ -1,4 +1,8 @@
+
+import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { ModalHeader } from "../ModalHeader";
+ 
 
 
 
@@ -6,6 +10,7 @@ import { FaBars } from "react-icons/fa";
 
 export function HeaderDash(){
 
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     return(
         <>
@@ -14,17 +19,16 @@ export function HeaderDash(){
                     <div className="flex-1">
                         <FaBars className="text-4xl mx-4 pt-2 md:hidden"/>
                     </div>
-                    <div className="flex-1 flex justify-end mx-8 items-center">
+                    <div onClick={()=> setShowModal(!showModal)} className="flex-1 flex justify-end mx-8 items-center cursor-pointer">
 
                         <img 
                         src="https://media-exp1.licdn.com/dms/image/C4D03AQFShga4BztLBQ/profile-displayphoto-shrink_200_200/0/1663092605941?e=1669248000&v=beta&t=5wcRdEu4iIn0HfbWK9rLXLI3H3U0rvSJHxYwp0U31rs" 
                         alt="avatar" className="object-cover h-10 rounded-full  mx-4"/>
 
-                        <p>Ola, António</p>
-                         
+                        <p>Ola, António</p>      
                     </div>
                 </header>
-        
+                {showModal && <ModalHeader/>}
         </>
     );
 

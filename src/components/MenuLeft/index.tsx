@@ -21,33 +21,26 @@ export function MenuLeft(){
                 <div className="flex-1">
 
                     <ul className="flex-1 mx-6 my-4 text-red-200 text-lg mt-20">
-                      
-                      <div className="item-dashboard">
-                        <MdOutlineSpaceDashboard  className="text-4xl mx-2 text-gray-800"/>
-                        <Link to="/dashboard" className="text-xl   font">Dashboard</Link>
-                      </div>
-
-                       <div className="item-dashboard">
-                        <FiUsers className="text-4xl mx-2 text-gray-800"/>
-                        <Link to="/dashboard/ListUsers" className="text-xl   font">Lista de Usuarios</Link>
-                       </div>
-                       
-                      <div className="item-dashboard">
-                        <BiTask className="text-4xl mx-2  text-gray-800"/>
-                        <li className="text-xl   font">Tarefas Concluidas</li>
-                      </div>
-
-                      <div className="item-dashboard">
-                        <CgMoveTask className="text-4xl mx-2 text-gray-800"/>
-                        <li className="text-xl    font">Tarefas Pendentes</li>
-                      </div>
-
-                      <div className="item-dashboard">
-                        <BiTaskX className="text-4xl mx-2 text-gray-800"/>
-                        <li className="text-xl    font">Tarefas Inacabadas</li>
-                      </div>
-                       
-                      
+                        <Link to="/dashboard" className="text-xl item-dashboard  font">
+                             <MdOutlineSpaceDashboard  className="text-4xl mx-2 text-gray-800"/>
+                              Dashboard
+                        </Link>
+                        <Link to="/dashboard/ListUsers" className="text-xl item-dashboard  font">
+                          <FiUsers className="text-4xl mx-2 text-gray-800"/>
+                            Lista de Usuarios
+                        </Link>
+                        <Link to="/dashboard/TasksDone" className="text-xl  item-dashboard  font">          
+                            <BiTask className="text-4xl mx-2  text-gray-800"/>
+                            Tarefas Concluidas
+                        </Link>
+                        <Link to="/dashboard/PendingTasks" className="text-xl item-dashboard font">
+                          <CgMoveTask className="text-4xl mx-2 text-gray-800"/>
+                            Tarefas Pendentes          
+                        </Link>
+                        <Link to="/dashboard/UnfinishedTasks" className="text-xl item-dashboard font">
+                          <BiTaskX className="text-4xl mx-2 text-gray-800"/>
+                          Tarefas Inacabadas 
+                        </Link>
                     </ul>
                     
                 </div>

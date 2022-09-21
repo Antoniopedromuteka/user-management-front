@@ -1,11 +1,36 @@
 import { MenuLeft } from "../components/MenuLeft"
 
-import {FaBars} from "react-icons/fa"
+
 import { Card } from "../components/Card"
 import { Table } from "../components/Table"
 import { HeaderDash } from "../components/HeaderDash"
 
 
+
+const MookData = [
+
+    {
+        title: "usuarios",
+        value : "40",
+        icon : "FaBars"
+    },
+    {
+        title: "Tarefas feitas",
+        value : "40",
+        icon : "FaBars"
+    },
+    {
+        title: "Tarefas Pendentes",
+        value : "40",
+        icon : "FaBars"
+    },
+    {
+        title: "Tarefas Inacabadas",
+        value : "40",
+        icon : "FaBars"
+    },
+
+]
 
 export const DashBoardHome = () =>{
 
@@ -24,13 +49,17 @@ export const DashBoardHome = () =>{
                <HeaderDash/>
 
 
-                <section className="flex-1 h-[calc(100vh-4rem)] mt-[4rem] text-red-400">
+                <section className="flex-1 h-[calc(100vh-4rem)] mt-[4rem] text-slate-900">
 
                     <div className="flex-1 flex py-10 mx-6 flex-wrap  gap-2">
 
-                        <Card/>
-                        <Card/>
-                        <Card/>
+                        {MookData.map(data => (
+
+                                <Card title={data.title} value={data.value} icon={data.icon} key={data.title} />
+
+                        ))}
+                  
+                    
                     </div>
 
 
