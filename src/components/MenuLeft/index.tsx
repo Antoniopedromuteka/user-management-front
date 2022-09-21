@@ -5,6 +5,7 @@ import {MdOutlineSpaceDashboard} from "react-icons/md"
 import {FiUsers} from "react-icons/fi"
 import {BiTask, BiTaskX} from "react-icons/bi"
 import {CgMoveTask} from "react-icons/cg"
+import { Link } from "react-router-dom"
 
 
 export function MenuLeft(){
@@ -23,12 +24,12 @@ export function MenuLeft(){
                       
                       <div className="item-dashboard">
                         <MdOutlineSpaceDashboard  className="text-4xl mx-2 text-gray-800"/>
-                        <li className="text-xl   font">Dashboard</li>
+                        <Link to="/dashboard" className="text-xl   font">Dashboard</Link>
                       </div>
 
                        <div className="item-dashboard">
                         <FiUsers className="text-4xl mx-2 text-gray-800"/>
-                        <li className="text-xl   font">Lista de Usuarios</li>
+                        <Link to="/dashboard/ListUsers" className="text-xl   font">Lista de Usuarios</Link>
                        </div>
                        
                       <div className="item-dashboard">
