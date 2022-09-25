@@ -39,9 +39,7 @@ export function Tasks(){
             if(tasksDeleted){
                 alert("tarefa deletada com sucesso!");
             }
-        }
-
-        
+        }  
 
     }
 
@@ -60,8 +58,6 @@ export function Tasks(){
             }
 
         }
-
-
     }
 
     return(

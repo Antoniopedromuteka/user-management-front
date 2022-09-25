@@ -80,8 +80,7 @@ export function TasksDone(){
 
             ):(
                 <h2 className="mx-6 text-2xl">Sem tarefas terminada</h2>
-            )}
-                             
+            )}             
                 </div>
                 </section>
             </section>
