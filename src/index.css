@@ -1,0 +1,22 @@
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+ 
+
+ @layer components{
+
+
+  .item-dashboard{
+  @apply flex flex-1 items-center mb-1 mt-6 hover:bg-gray-900 hover:text-red-100 rounded-sm cursor-pointer p-2 ;
+  }
+  .button{
+   @apply border p-2 rounded-lg text-xl bg-slate-800 text-white;
+  }
+ }
+
+
+ body{
+   box-sizing: border-box;  
+ }
+
