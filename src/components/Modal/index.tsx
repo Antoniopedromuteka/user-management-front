@@ -5,9 +5,9 @@
 import Modal from "react-modal";
 
 import {setAppElement} from "react-modal"
-import {useContext} from "react"
-import { Form } from "../Form";
-import { FormContext } from "../../hooks/UseForm";
+import {ReactNode, useContext} from "react"
+import { FormContext } from "../../context/FormContext";
+ 
  
 
 
@@ -17,8 +17,12 @@ setAppElement("#root");
 
 
 
+interface Props{
+    children: ReactNode | ReactNode [];
+}
 
-export function ModalC(){
+
+export function ModalC({children}:Props){
 
 
      const {isOpenModal, setIsOpenModal} = useContext(FormContext);
@@ -55,7 +59,9 @@ export function ModalC(){
             onRequestClose={handleCloseModal}
             style= {customStyles}   
           >
-            <Form/>
+
+            {children}
+ 
       
         </Modal>
         </div>

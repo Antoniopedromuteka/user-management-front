@@ -1,15 +1,18 @@
  
 import { HeaderDash } from "../components/HeaderDash";
 import { MenuLeft } from "../components/MenuLeft";
-import { UseTasksData } from "../hooks/UseTasksData";
+ 
 
 import {RiDeleteBin2Line} from "react-icons/ri"
+ 
+import { UseTasksData } from "../hooks/UseTasksData";
  
 
 
 export function DeletedTasks(){
 
     const {tasksDeleted} = UseTasksData();
+
     return(
         <>
             <main className="flex  h-screen">
@@ -32,6 +35,7 @@ export function DeletedTasks(){
                             <table className="w-full relative  text-sm text-left  text-white dark:text-gray-400 ">
 
                             <thead className="text-xs text-white  bg-slate-800">
+                            <tr>    
                             <th scope="col" className="py-3 px-6">
                                 Nome
                             </th>
@@ -44,26 +48,18 @@ export function DeletedTasks(){
                             <th scope="col" className="py-3 px-6">
                                 Status
                             </th>
-                        
+                            </tr>
     
                             </thead>
                             <tbody>
                             {tasksDeleted && tasksDeleted.map(task => (
                                 <tr key={task.id} className="border-b bg-black dark:border-gray-700">
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{task.name.toUpperCase()}</td>
-                                </th>
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{task.tipo.toUpperCase()}</td>
-                                </th>
-                                    
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{task.data}</td>
-                                </th>
-
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td className="flex items-center"><RiDeleteBin2Line className="mx-2 text-2xl text-red-400"/></td>
-                                </th>
+                                  <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.name.toUpperCase()}</td>
+                                 <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.tipo}</td>
+                                <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.data.toUpperCase()}</td>
+                         
+                                    <td className="flex items-center py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white"><RiDeleteBin2Line className="mx-2 text-2xl text-red-400"/></td>
+                        
                                
                                 </tr> 
                             ))} 

@@ -1,10 +1,12 @@
  
  
 import { useContext } from "react";
+import { FormUsers } from "../components/Form/FormUsers";
 import { HeaderDash } from "../components/HeaderDash";
 import { MenuLeft } from "../components/MenuLeft";
-import { ModalC } from "../components/Modal";
-import { FormContext} from "../hooks/UseForm";
+import { FormContext } from "../context/FormContext";
+ 
+import { UseModal } from "../hooks/UseModal";
  
 import {UseUserData} from "../hooks/UseUsersData";
 
@@ -15,21 +17,26 @@ export function ListUsers(){
 
     const {users} = UseUserData();
 
-    const {isOpenModal, setIsOpenModal, setTypeForm} = useContext(FormContext);
+    const {isOpenModal} = useContext(FormContext);
+
+    const {setTypeUser, handleOpenModal} = UseModal();
   
 
+    function handleADDUser(){
 
-    function handleModal(){
-        setTypeForm("users");
-        setIsOpenModal(true)
+        setTypeUser();
+        handleOpenModal()
+        
     }
 
-   
+ 
+
+    
 
     return(
         <>
          
- 
+        {isOpenModal && <FormUsers/>}
         
         <main className="flex  h-screen">
 
@@ -53,7 +60,7 @@ export function ListUsers(){
 
                         <h2>Lista de usuários</h2>
 
-                        <button onClick={handleModal} className="border p-2 rounded-lg text-xl bg-slate-800 text-white">
+                        <button onClick={handleADDUser} className="border p-2 rounded-lg text-xl bg-slate-800 text-white">
                             Adicionar
                         </button>
 
@@ -72,6 +79,8 @@ export function ListUsers(){
                             <table className="w-full relative  text-sm text-left  text-white dark:text-gray-400 ">
                 
                             <thead className="text-xs text-white  bg-slate-800">
+
+                             <tr>   
                             <th scope="col" className="py-3 px-6">
                                 Nome
                             </th>
@@ -81,6 +90,8 @@ export function ListUsers(){
                             <th scope="col" className="py-3 px-6">
                                 Cargo
                             </th>
+
+                            </tr>
                 
                             </thead>
                             <tbody>
@@ -88,16 +99,9 @@ export function ListUsers(){
                             {users && users.map((users) => (
                                 
                                 <tr key={users.email} className="border-b bg-black dark:border-gray-700">
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{users.name.toUpperCase()}</td>
-                                </th>
-                                    
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{users.email}</td>
-                                </th>
-                                <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                                    <td>{users.cargo.toUpperCase()}</td>
-                                </th>
+                                    <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{users.name.toUpperCase()}</td>
+                                    <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{users.email}</td>
+                                    <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{users.cargo.toUpperCase()}</td>
                                 </tr> 
                             ))} 
                     
@@ -130,7 +134,7 @@ export function ListUsers(){
 
 
         </main>
-        {isOpenModal && <ModalC/>}
+        
         </>
     )
 

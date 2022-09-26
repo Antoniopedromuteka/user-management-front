@@ -1,29 +1,35 @@
 import { HeaderDash } from "../components/HeaderDash";
 import { MenuLeft } from "../components/MenuLeft";
-import { ModalC } from "../components/Modal";
-import { FormContext } from "../hooks/UseForm";
-import { UseTasksData } from "../hooks/UseTasksData";
+import {FormTasks} from "../components/Form/FormTasks"
+ 
  
 
 import {useContext} from "react"
 import { AiFillDelete, AiOutlineFileDone } from "react-icons/ai";
+
 import { api } from "../services/api";
+import { FormContext } from "../context/FormContext";
+import { UseTasksData } from "../hooks/UseTasksData";
+import { TaskContext } from "../context/TaskContext";
  
 
 
 export function Tasks(){
     
+ 
+
     const {tasks} = UseTasksData();
 
+    
    
-
- 
     const {setTypeForm,isOpenModal, setIsOpenModal} = useContext(FormContext);
+    const {update, setUpdate} = useContext(TaskContext);
 
 
     function handleModal(){
-        setTypeForm("tasks");
+        
         setIsOpenModal(true);
+        setTypeForm(true);
     }
 
     async function handleDeleteTask(id:string){
@@ -38,6 +44,7 @@ export function Tasks(){
 
             if(tasksDeleted){
                 alert("tarefa deletada com sucesso!");
+                setUpdate(!update)
             }
         }  
 
@@ -54,7 +61,8 @@ export function Tasks(){
             .catch(error => console.log(error));
 
             if(taskDone){
-                alert("A tarefa foi concluida com sucesso!")
+                alert("A tarefa foi concluida com sucesso!");
+                setUpdate(!update)
             }
 
         }
@@ -63,7 +71,7 @@ export function Tasks(){
     return(
 
         <>
-            {isOpenModal &&  <ModalC/>}
+            {isOpenModal && <FormTasks/>}
             <main className="flex  h-screen">
             <MenuLeft/>
             <section className="h-screen flex-1 md:w-[calc(100%-320px)] md:ml-[320px] text-white">
@@ -86,6 +94,8 @@ export function Tasks(){
                     <table className="w-full relative  text-sm text-left  text-white dark:text-gray-400 ">
 
                     <thead className="text-xs text-white  bg-slate-800">
+
+                     <tr>   
                     <th scope="col" className="py-3 px-6">
                         Nome
                     </th>
@@ -102,29 +112,22 @@ export function Tasks(){
                         Açcões
                     </th>
 
+                    </tr>
+
                     </thead>
                     <tbody>
                     {tasks && tasks.map(task => (
                         <tr key={task.id} className="border-b bg-black dark:border-gray-700">
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.name.toUpperCase()}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.tipo.toUpperCase()}</td>
-                        </th>
-                            
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.data}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.user.name.toUpperCase()}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td className="flex items-center ">
+                           <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.name.toUpperCase()}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.tipo}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.data.toUpperCase()}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.user.name}</td>
+
+
+                            <td className="flex items-center p-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
                                 <AiFillDelete className="text-2xl mx-2 text-red-400 cursor-pointer" onClick={() => handleDeleteTask(task.id)}/>
                                 <AiOutlineFileDone className="text-2xl text-green-400 cursor-pointer" onClick={() => handleDoneTask(task.id)}/>
                             </td>
-                        </th>
                         </tr> 
                     ))} 
                     </tbody>

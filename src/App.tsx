@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormProvider } from './hooks/UseForm';
-import { TaskProvider } from './hooks/UseTasksData';
+import { FormProvider } from './context/FormContext';
+import { TaskProvider } from './context/TaskContext';
+
 import { UserDataProvider } from './hooks/UseUsersData';
  
 import { Router } from './Router';
@@ -8,14 +9,15 @@ import { Router } from './Router';
  
 function App() {
   return (
-
-    <UserDataProvider>
-      <TaskProvider>
+    <>
+     <TaskProvider>
+      <UserDataProvider>
         <FormProvider>
            <Router/>
-        </FormProvider>
-      </TaskProvider>  
-    </UserDataProvider>
+        </FormProvider> 
+       </UserDataProvider>
+    </TaskProvider> 
+    </>
   );
 
 }

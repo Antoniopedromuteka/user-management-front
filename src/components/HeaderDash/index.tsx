@@ -14,7 +14,7 @@ export function HeaderDash(){
 
     return(
         <>
-             <header className="flex-1 h-16 text-white  bg-stone-800 flex items-center fixed top-0 right-0 w-full md:w-[calc(100%-320px)] md:ml-[320px]">
+             <header className="flex-1 h-16 text-white z-50  bg-stone-800 flex items-center fixed top-0 right-0 w-full md:w-[calc(100%-320px)] md:ml-[320px]">
                     
                     <div className="flex-1">
                         <FaBars className="text-4xl mx-4 pt-2 md:hidden"/>

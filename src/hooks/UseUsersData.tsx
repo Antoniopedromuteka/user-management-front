@@ -1,6 +1,7 @@
  
  
 import {  useEffect, useState, createContext, ReactNode, useContext} from "react";
+import { TaskContext } from "../context/TaskContext";
  
 import { api } from "../services/api";
 
@@ -33,6 +34,9 @@ export const UserContext = createContext<IUser>({} as IUser);
 export const UserDataProvider = ({children}:UserProviderProps) =>{
 
     const [users, setUsers] = useState<userDataProps[]>([]);
+
+    const { update} = useContext(TaskContext);
+
     
 
 
@@ -47,7 +51,7 @@ export const UserDataProvider = ({children}:UserProviderProps) =>{
             console.log("Erro inesperado")
         }
        
-   },[users])
+   },[update])
 
    const usersLength = users.length;
 

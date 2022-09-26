@@ -7,9 +7,12 @@ import { UseTasksData } from "../hooks/UseTasksData";
 
 
 
-export function TasksDone(){
 
+export function TasksDone(){
+ 
     const {tasksDone} = UseTasksData();
+
+
     return(
         <>
             <main className="flex  h-screen">
@@ -31,6 +34,8 @@ export function TasksDone(){
                     <table className="w-full relative  text-sm text-left  text-white dark:text-gray-400 ">
 
                     <thead className="text-xs text-white  bg-slate-800">
+
+                    <tr>   
                     <th scope="col" className="py-3 px-6">
                         Nome
                     </th>
@@ -48,29 +53,19 @@ export function TasksDone(){
                         Status
                     </th>
 
+                    </tr>
 
                     </thead>
                     <tbody>
                     {tasksDone && tasksDone.map(task => (
-                        <tr key={task.id} className="border-b bg-black dark:border-gray-700">
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.name.toUpperCase()}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.tipo.toUpperCase()}</td>
-                        </th>
-                            
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.data}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td>{task.user.name.toUpperCase()}</td>
-                        </th>
-                        <th scope="row" className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">
-                            <td className="flex"> 
+                      <tr key={task.id} className="border-b bg-black dark:border-gray-700">
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.name.toUpperCase()}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.tipo}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.data.toUpperCase()}</td>
+                            <td className="py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white">{task.user.name}</td>
+                            <td className="flex py-4 px-6 font-medium text-red-200 whitespace-nowrap dark:text-white"> 
                                  <MdOutlineDone className="mx-2 text-2xl text-green-400"/>
                             </td>
-                        </th>
                         </tr> 
                     ))} 
                     </tbody>
