@@ -30,11 +30,13 @@ type IForm = {
     formTasks : FormTasksProps,
     userId : userIdProps,  
     isOpenModal : boolean,
+    loggin: boolean,
     typeForm: boolean,
     setIsOpenModal : (newState: boolean) => void; 
     setFormUsers: (newState:FormUsersProps) => void;
     setFormTasks: (newState:FormTasksProps) => void;
     setTypeForm: (newState:boolean) => void;
+    setLoggin: (newState:boolean) => void
     setUserId: (newState:userIdProps) => void;
 }
 
@@ -53,6 +55,7 @@ export function FormProvider({children}: Props){
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
     const [typeForm, setTypeForm] = useState<boolean>(false);
+    const [loggin, setLoggin] = useState(false);
     
 
     const [formUsers, setFormUsers] = useState<FormUsersProps>({
@@ -73,7 +76,7 @@ export function FormProvider({children}: Props){
 
 
     return(
-        <FormContext.Provider value={{formUsers, setFormUsers, formTasks, setFormTasks, userId, setUserId, isOpenModal,setIsOpenModal, typeForm, setTypeForm}}>
+        <FormContext.Provider value={{formUsers, loggin,setLoggin, setFormUsers, formTasks, setFormTasks, userId, setUserId, isOpenModal,setIsOpenModal, typeForm, setTypeForm}}>
             {children}
         </FormContext.Provider>
     )
