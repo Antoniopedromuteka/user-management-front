@@ -17,6 +17,7 @@ import * as yup from "yup";
 import { ModalC } from "../Modal";
 import { FormContext } from "../../context/FormContext";
 import { TaskContext } from "../../context/TaskContext";
+import { AuthContext } from "../../context/AuthContext";
 
  
 
@@ -57,6 +58,7 @@ export function FormTasks(){
 
 
     const {typeForm, setIsOpenModal} = useContext(FormContext);
+ 
 
     const {setUpdate, update} = useContext(TaskContext);
     

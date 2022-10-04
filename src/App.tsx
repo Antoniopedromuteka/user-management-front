@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthProvider } from './context/AuthContext';
 import { FormProvider } from './context/FormContext';
 import { TaskProvider } from './context/TaskContext';
 
@@ -10,6 +11,7 @@ import { Router } from './Router';
 function App() {
   return (
     <>
+    <AuthProvider>
      <TaskProvider>
       <UserDataProvider>
         <FormProvider>
@@ -17,6 +19,7 @@ function App() {
         </FormProvider> 
        </UserDataProvider>
     </TaskProvider> 
+    </AuthProvider>
     </>
   );
 

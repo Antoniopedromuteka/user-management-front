@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup"
 import { UseForm } from "../../hooks/UseForm";
 
+import { ToastContainer, toast, TypeOptions } from "react-toastify";
+import "react-toastify/ReactToastify.min.css";
+
 
 interface adminProps{
     name:string;
@@ -38,12 +41,16 @@ export function SignUp(){
 
       function signUp(){
 
+        toast("Usuario cadastrado com sucesso", {
+            type: "success" as TypeOptions
+          })
+
       }
 
 
 
     return(
-          
+    <>
         <div className="flex-1 max-w-[400px] mt-24 md:mt-0 bg-zinc-800 mx-4 h-[500px] rounded-lg shadow-2xl">
 
         <h2 className="text-center mt-6  text-sky-300  text-3xl">Cadastre-se</h2>
@@ -65,6 +72,8 @@ export function SignUp(){
         </form>
 
     </div>
+        <ToastContainer position="top-right"/>
+    </>
 
     )
 }

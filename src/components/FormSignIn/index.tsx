@@ -4,6 +4,12 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup"
 import { UseForm } from "../../hooks/UseForm";
 
+import { ToastContainer} from "react-toastify";
+import "react-toastify/ReactToastify.min.css";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+
+
 
 interface adminProps{
     email: string;
@@ -28,22 +34,29 @@ export function SignIn(){
         resolver: yupResolver(schema)
       });
 
+      const {sigIn} = useContext(AuthContext)
+
       const {handleSetSignUp} = UseForm();
 
 
-      function signIn(data:adminProps){
 
-        
-
+      async function handleSignIn(data:adminProps){
+        try{
+          await sigIn(data);
+        }catch(err){
+          console.log(err);
+        }
       }
+      
 
     return(
+      <>
         <div className="flex-1 max-w-[400px] mt-24 md:mt-0 bg-zinc-800 mx-4 h-[400px] rounded-lg shadow-2xl">
 
         <h2 className="text-center mt-6  text-sky-300  text-3xl">Login</h2>
        
 
-        <form onSubmit={handleSubmit(signIn)} className="relative flex-1 flex flex-col h-[300px] mt-10 mx-4">
+        <form onSubmit={handleSubmit(handleSignIn)} className="relative flex-1 flex flex-col h-[300px] mt-10 mx-4">
 
             <input type="text" className="p-3 mb-4 rounded-md outline-none" placeholder="Digite o seu email" {...register("email", {required: true})}/>
             {errors.email && <span className="showErrors mb-2">{errors.email?.message }</span>}
@@ -57,6 +70,8 @@ export function SignIn(){
         </form>
 
     </div>
+    <ToastContainer position="top-center"/>
+    </>
     )
 
 }

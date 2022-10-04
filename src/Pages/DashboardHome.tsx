@@ -48,23 +48,19 @@ const MookData = [
             <section className="h-screen flex-1 md:w-[calc(100%-320px)] md:ml-[320px] text-white">
                <HeaderDash/>
                 <section className="flex-1 h-[calc(100vh-4rem)] mt-[4rem] text-slate-900">
-                    <div className="flex-1 flex py-10 mx-6 flex-wrap  gap-2">
+                    <div className="flex-1 flex py-10 mx-4 flex-wrap  gap-1">
                         {MookData.map(data => (
                                 <Card title={data.title} value={data.value} icon={data.icon} key={data.title} />
                         ))}
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 flex-wrap">
                         <div className="flex flex-1 justify-center text-2xl mb-8">
                                  <h2>Tarefas Pendentes</h2>
                         </div>
 
                        {tasks.length ? (
-
-                            <div className="flex-1 flex md:mx-10 mx-6 overflow-auto  rounded-lg">
-
-                                
-
-                            <table className="w-full relative  text-sm text-left  text-white dark:text-gray-400 ">
+                            <div className= "flex flex-1  md:mx-10 mx-6 overflow-x-auto  rounded-lg">
+                            <table className="w-full relative   text-sm text-left  text-white dark:text-gray-400 ">
 
                             <thead className="text-xs text-white  bg-slate-800">
                               <tr>  
@@ -102,9 +98,6 @@ const MookData = [
 
                             <h2 className="mx-6 text-2xl">Sem tarefas</h2>
                        )}     
-                       
-
-                 
                     </div>
                 </section>
             </section>

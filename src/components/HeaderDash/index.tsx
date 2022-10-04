@@ -1,6 +1,7 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { AuthContext } from "../../context/AuthContext";
 import { ModalHeader } from "../ModalHeader";
  
 
@@ -11,6 +12,7 @@ import { ModalHeader } from "../ModalHeader";
 export function HeaderDash(){
 
     const [showModal, setShowModal] = useState<boolean>(false);
+    const {admin} = useContext(AuthContext)
 
     return(
         <>
@@ -25,7 +27,7 @@ export function HeaderDash(){
                         src="https://media-exp1.licdn.com/dms/image/C4D03AQFShga4BztLBQ/profile-displayphoto-shrink_200_200/0/1663092605941?e=1669248000&v=beta&t=5wcRdEu4iIn0HfbWK9rLXLI3H3U0rvSJHxYwp0U31rs" 
                         alt="avatar" className="object-cover h-10 rounded-full  mx-4"/>
 
-                        <p>Ola, António</p>      
+                        <p>Ola, {admin?.name}</p>      
                     </div>
                 </header>
                 {showModal && <ModalHeader/>}

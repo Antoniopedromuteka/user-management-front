@@ -19,7 +19,7 @@ export function Card(props:CardProps){
     return(
         <>
         
-        <div className="flex flex-1  items-center px-3 justify-between w-[400px] max-w-[600px]  h-24 rounded-md border-2 ">
+        <div className="flex flex-1   items-center px-3 justify-between w-[400px] max-w-[600px]  h-24 rounded-md border-2 ">
 
             <div className="text-lg">
                 <p>{props.title}</p>

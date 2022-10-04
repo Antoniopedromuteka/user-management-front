@@ -10,6 +10,7 @@ import * as yup from "yup";
 import { ModalC } from "../Modal";
 import { FormContext } from "../../context/FormContext";
 import { TaskContext } from "../../context/TaskContext";
+import { AuthContext } from "../../context/AuthContext";
 
 
 
@@ -49,6 +50,7 @@ export function FormUsers(){
         resolver: yupResolver(schema)
       });
 
+      const {admin} = useContext(AuthContext);  
       
 
 
@@ -67,10 +69,10 @@ export function FormUsers(){
 
     async function CreateUser(data:UserProps){
 
-        console.log(data);
+        console.log(admin?.id);
      
     
-            const dataUsers = await api.post("/users/ee642a95-2962-418f-8634-51b989ce13bb",data)
+            const dataUsers = await api.post(`/users/${admin?.id}`,data)
             .then(response => response.data)
             .catch(err => console.log(err));
 

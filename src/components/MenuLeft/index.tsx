@@ -35,14 +35,7 @@ export function MenuLeft(){
                             <BiTask className="text-4xl mx-2  text-gray-800"/>
                             Tarefas
                         </Link>
-                        <Link to="/dashboard/TasksDone" className="text-xl  item-dashboard  font">          
-                            <BiTask className="text-4xl mx-2  text-gray-800"/>
-                            Tarefas Concluidas
-                        </Link>
-                        <Link to="/dashboard/DeletedTasks" className="text-xl item-dashboard font">
-                          <BiTaskX className="text-4xl mx-2 text-gray-800"/>
-                          Tarefas Deletadas
-                        </Link>
+                      
                     </ul>
                     
                 </div>
